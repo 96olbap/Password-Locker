@@ -42,5 +42,20 @@ class Credentials:
                 return True
                 return False
 
+    @classmethod
+    def find_by_acc_username(cls,name):
+        '''
+        Method that takes in an account's username and returns credentials that match that account.
+
+        Args:
+            name: acc-username to search for
+        Returns :
+            Credentials that match the account.
+        '''
+
+        for credentials in cls.credentials_list:
+            if credentials.acc-username == name:
+                return credentials
+
 
     
