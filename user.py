@@ -22,3 +22,22 @@ class User:
         delete_user method deletes a saved user from the user_list
         '''
         User.user_list.remove(self)
+
+    @classmethod
+    def display_users(cls):
+        '''
+        display_users method shows saved users from the user_list
+        '''
+        return cls.user_list
+
+    @classmethod
+    def user_exist(cls,number):
+        '''
+        user_exists method checks if a user exists from the user_list
+        Returns :
+            Boolean: True or false depending if the user exists
+        '''
+        for user in cls.user_list:
+            if user.username == number:
+                return True
+                return False
