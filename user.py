@@ -41,3 +41,18 @@ class User:
             if user.username == number:
                 return True
                 return False
+
+    @classmethod
+    def find_by_username(cls,name):
+        '''
+        Method that takes in a username and returns credentials that match that username.
+
+        Args:
+            name: username to search for
+        Returns :
+            Credentials that match the username.
+        '''
+
+        for user in cls.user_list:
+            if user.username == name:
+                return user
