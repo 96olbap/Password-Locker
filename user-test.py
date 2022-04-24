@@ -1,7 +1,7 @@
 import unittest
 from user import User
 
-class TestPassLocker(unittest.TestCase):
+class TestUser(unittest.TestCase):
     '''
     Test class that defines test cases for the user class behaviours
     '''
@@ -54,7 +54,7 @@ class TestPassLocker(unittest.TestCase):
 
     def test_user_exists(self):
         '''
-        test to check if we can return a Boolean  if we cannot find the contact.
+        test to check if we can return a Boolean  if we cannot find the user.
         '''
         self.new_user.save_user()
         test_user = User('Test', 'test123')
@@ -69,6 +69,8 @@ class TestPassLocker(unittest.TestCase):
         method that returns a list of all users saved
         '''
         self.assertEqual(User.display_users(),User.user_list)
+
+
 
     
 
