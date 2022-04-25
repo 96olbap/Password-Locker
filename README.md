@@ -30,7 +30,8 @@ ___
  #### Event
  Then the User should be able to access his\her dashboard\
  The user should also be able to pick between\
-    - saving his credentia\
+    - generating an automatic password and saving it\
+    - creating and saving his credentia\
     - viewing his credentials\
     - deleting an account's credentials\
     \
