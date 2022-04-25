@@ -38,7 +38,7 @@ class Credentials:
             Boolean: True or false depending if the object exists
         '''
         for credentials in cls.credentials_list:
-            if credentials.acc-username == number:
+            if credentials.acc_username == number:
                 return True
                 return False
 
@@ -54,7 +54,7 @@ class Credentials:
         '''
 
         for credentials in cls.credentials_list:
-            if credentials.acc-username == name:
+            if credentials.acc_username == name:
                 return credentials
 
 

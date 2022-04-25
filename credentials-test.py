@@ -21,9 +21,9 @@ class TestCredentials(unittest.TestCase):
         '''
         test_init test case to test if the object is initialized properly
         '''
-        self.assertEqual(self.new_cred.acc-name, 'twitter')
-        self.assertEqual(self.new_cred.acc-username,'manzzalvin')
-        self.assertEqual(self.new_cred.acc-password, 'pass123')
+        self.assertEqual(self.new_cred.acc_name, 'twitter')
+        self.assertEqual(self.new_cred.acc_username,'manzzalvin')
+        self.assertEqual(self.new_cred.acc_password, 'pass123')
 
     def test_save_credentials(self):
         '''
@@ -64,5 +64,24 @@ class TestCredentials(unittest.TestCase):
         cred_exists = Credentials.credentials_exist('manzzalvin')
         self.assertTrue(cred_exists)
 
-    if __name__ == '__main__':
-        unittest.main()
+    def test_display_all_cred(self):
+        '''
+        method that returns a list of all credentials saved
+        '''
+        self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
+
+    def test_find_cred_by_username(self):
+        '''
+        test to check if we can find a user's credentials by username and display information
+        '''
+
+        self.new_cred.save_credentials()
+        test_cred = Credentials('twitter', 'manzzalvin', 'pass123')
+        test_cred.save_credentials()
+
+        found_cred = Credentials.find_by_acc_username("manzzalvin")
+
+        self.assertEqual(found_cred.password,test_cred.password)
+
+if __name__ == '__main__':
+    unittest.main()

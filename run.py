@@ -45,7 +45,7 @@ def create_account_cred(accountName, accountUsername, accountPassword):
     Function that creates a new account's credentials
     '''
 
-    new_account =  Credentials(acc-name, acc-username, acc-password)
+    new_account =  Credentials(acc_name, acc_username, acc_password)
     return new_account
 
 def save_account(user):
@@ -60,8 +60,8 @@ def delete_account(user):
     '''
     user.delete_credentials()
 
-def find_account(username):
-    return Credentials.find_by_username(username)
+def find_account(name):
+    return Credentials.find_by_username(name)
 
 def display_accounts():
     return Credentials.display_credentials()
