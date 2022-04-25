@@ -28,7 +28,7 @@ class Credentials:
         display_credentials method shows saved credentials from the credentials_list
         '''
         for credential in cls.credentials_list:
-            return cls.credentials_list
+            return credential
 
     @classmethod
     def credentials_exist(cls,number):

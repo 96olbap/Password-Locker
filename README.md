@@ -3,7 +3,7 @@ Password Locker. A Python app that allows you to manage your passwords from one 
 
 ## Table of contents
   - [Project Description](#Project-description) 
-  - [Built with](#built-with)
+  - [Built with](#Built-with)
   - [Contact Information](#contact-information)
   - [License & Copywright Information](#License-and-Copywright-Information)
   - [Author](#author)

@@ -68,7 +68,10 @@ class TestCredentials(unittest.TestCase):
         '''
         method that returns a list of all credentials saved
         '''
-        self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
+        self.new_cred.save_credentials()
+        allCredentials_list = [Credentials.display_credentials()]
+        self.assertEqual(allCredentials_list, Credentials.credentials_list)
+        # self.assertEqual(Credentials.display_credentials().acc_username, Credentials.credentials_list[0].acc_username)
 
     def test_find_cred_by_username(self):
         '''
@@ -81,7 +84,7 @@ class TestCredentials(unittest.TestCase):
 
         found_cred = Credentials.find_by_acc_username("manzzalvin")
 
-        self.assertEqual(found_cred.password,test_cred.password)
+        self.assertEqual(found_cred.acc_password, test_cred.acc_password)
 
 if __name__ == '__main__':
     unittest.main()

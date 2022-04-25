@@ -45,7 +45,7 @@ def create_account_cred(accountName, accountUsername, accountPassword):
     Function that creates a new account's credentials
     '''
 
-    new_account =  Credentials(acc_name, acc_username, acc_password)
+    new_account =  Credentials(accountName, accountUsername, accountPassword)
     return new_account
 
 def save_account(user):
@@ -61,10 +61,11 @@ def delete_account(user):
     user.delete_credentials()
 
 def find_account(name):
-    return Credentials.find_by_username(name)
+    return Credentials.find_by_acc_username(name)
 
 def display_accounts():
-    return Credentials.display_credentials()
+    allAccCred = [Credentials.display_credentials]
+    return allAccCred
 
 def main():
 
@@ -95,43 +96,48 @@ def main():
             loginusername = input()
             print("Enter your password:")
             loginpassword = input()
-            if find_user(loginpassword):
-                print("\n")
-                print("Use these short codes : ca - create a another account, ve - View existing accounts")
-                print("-"*60)
-                choose = input().lower()
-                if choose == 'ca':
-                    print("Add your account credentials...")
-                    print("-"*25)
-                    accountUsername = loginusername
-                    print("Acount name: eg twitter, instagram, etc")
-                    accountName = input()
+            current_user = find_user(loginusername)
+            if current_user:
+                if current_user.password == loginpassword:
                     print("\n")
-                    print("Use these short codes: g - Generate automatic password or cp - create your own new password")
-                    decision = input()
-                    if decision == 'g':
-                        characters = string.ascii_letters + string.digits
-                        accountPassword = "".join(choice(characters)for x in range(randint(6,16)))
-                        print(f"Password: {accountPassword}")
-                    elif decision == 'cp':
-                        print("Enter your password:")
-                        accountPassword = input()
+                    print("Use these short codes : ca - create new account credentials, ve - View existing accounts")
+                    print("-"*60)
+                    choose = input().lower()
+                    if choose == 'ca':
+                        print("Add your account credentials...")
+                        print("-"*25)
+                        accountUsername = loginusername
+                        print("Acount name: eg twitter, instagram, etc")
+                        accountName = input()
+                        print("\n")
+                        print("Use these short codes: g - Generate automatic password or cp - create your own new password")
+                        decision = input()
+                        if decision == 'g':
+                            characters = string.ascii_letters + string.digits
+                            accountPassword = "".join(choice(characters)for x in range(randint(6,16)))
+                            print(f"Password: {accountPassword}")
+                        elif decision == 'cp':
+                            print("Enter your password:")
+                            accountPassword = input()
+                        else:
+                            print("Kindly put in a valid choice")
+                        save_account(create_account_cred(accountName, accountUsername, accountPassword))
+                        print('\n')
+                        print(f" Account Name:{accountName} \nUsername:{accountUsername} \nPassword:{accountPassword}")
+                    elif choose == 've':
+                        print()
+                        if find_account(loginusername):
+                            print("Here is a list of your created accounts:")
+                            print("-"*25)
+                            for account in display_accounts():
+                                print(f"Account: {accountName} \nPassword: {accountPassword} \n\n")
+                        else :
+                            print("You have no saved credentials!")
                     else:
                         print("Kindly put in a valid choice")
-                    save_account(create_account_cred(accountName, accountUsername, accountPassword))
-                    print('\n')
-                    print(f" Account Name:{accountName} \nUsername:{accountUsername} \nPassword:{accountPassword}")
-                elif choose == 've':
-                    if find_account(accountUsername):
-                        print("Here is a list of your created accounts:")
-                        print("-"*25)
-                        for user in display_accounts():
-                            print(f"Account: {accountName} \nPassword: {accountPassword} \n\n")
-                    else :
-                        print("Invalid credentials!")
+                        print("\n")
                 else:
-                    print("Kindly put in a valid choice")
-                    print("\n")
+                    print('Wrong password')
             else:
                 print("Incorrect username or password, kindly try again! Thank you")
                 print("\n")
