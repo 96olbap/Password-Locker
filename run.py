@@ -76,7 +76,7 @@ def main():
     print('\n')
 
     while True:
-        print("Use these short codes : cu - create a new account, lg - Log in to your account")
+        print("Use these short codes : cu - create a new Password Locker account, lg - Log in to your account")
         short_code = input().lower()
         if short_code == 'cu':
             print("Create account")
@@ -89,7 +89,7 @@ def main():
             print('Account created successfully! Your accound details are as follows:')
             print("-"*10)
             print(f"Name: {username} \nPassword: {password}")
-            print(f"\nUse your details to log into your account")
+            print(f"\nUse your details to log into your Password Locker account")
             print("\n \n")
         elif short_code == 'lg':
             print("Enter username...")
@@ -100,7 +100,7 @@ def main():
             if current_user:
                 if current_user.password == loginpassword:
                     print("\n")
-                    print("Use these short codes : ca - create new account credentials, ve - View existing accounts")
+                    print("Use these short codes : ca - save new account credentials, ve - View existing accounts credentials")
                     print("-"*60)
                     choose = input().lower()
                     if choose == 'ca':
